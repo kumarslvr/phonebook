@@ -59,8 +59,7 @@ class phone:
             print("no contact found on {}'s phone".format(self.name))
 
     def edit_contact(self):
-        '''allows user to change exisiting contact's name, date of birth 
-        and phone number based on user's choice.'''
+        '''allows user to change exisiting contact's name, date of birth, add, remove or replace phone number.'''
 
         print("enter the name of the person you want to change details to")
         name = input()
@@ -86,12 +85,14 @@ class phone:
                     person['date of birth'] = date
 
                 elif choice == 'number':
-                    print("enter 'add' to add new number 'replace' to replace an exisiting number")
+                    print("enter 'add' to add new number, 'delete' to delete a number and 'replace' to replace an exisiting number")
                     add_replace = input()
                     if add_replace == 'add':
                         print("please enter the number you want to add to the list")
                     elif add_replace == 'replace':
                         print("please enter the old number you want to replace")
+                    elif add_replace == 'delete':
+                        print("enter number you want to delete")
                     else: 
                         print("invalid input")
                         return
@@ -107,6 +108,12 @@ class phone:
 
                     if country != "" and add_replace == 'add':    
                         person['phone numbers'].append(number_to_be_replaced)   #adding a new number to exisiting phonelist
+
+                    elif country != "" and add_replace == 'delete':
+                        if number_to_be_replaced in person['phone numbers']:
+                            person['phone numbers'].remove(number_to_be_replaced)
+                        else:
+                            print("number not found")
 
                     elif country != "" and add_replace == 'replace':
                         
@@ -159,8 +166,6 @@ class phone:
             with open(self.name+'.json', 'w') as f:
                 json.dump(self.phone_data, f, indent=2)
 
-
-            
 
 
     def import_contact(self, filename):
