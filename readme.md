@@ -1,2 +1,2 @@
-# A phone book application that will let you perform operations like adding a contacts, editing contacts, removing cotnacts and importing contacts from a different json file. 
-
+# A phone book application that will let you perform operations like adding a contacts, editing contacts, removing contacts and importing contacts. 
+# All phone data and changes will be stored in a json file which will be used to import contacts on to another phone object. 
